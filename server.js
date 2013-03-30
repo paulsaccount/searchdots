@@ -15,6 +15,10 @@ var server = http.createServer(function(req, res) {
     }
     else if (req.url.match(/^\/client.js$/)) {
         return serve(res, "/www/client.js", "text/javascript");
+    } else if (req.url.match(/^\/uparrow.png$/)) {
+        return serve(res, "/www/uparrow.png", "image/png");
+    } else if (req.url.match(/^\/downarrow.png$/)) {
+        return serve(res, "/www/downarrow.png", "image/png");
     }
     
     res.writeHead(404, {"Content-Type": "text/html"});

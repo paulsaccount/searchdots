@@ -66,6 +66,28 @@ h1 {
     border-radius: 3px;
 }
 
+.user_points {
+    position: absolute;
+    border-radius: 3px;
+    border: 1px solid #eee;
+
+    font-family: Arial;
+    font-size: 24px;
+    padding: 2px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+}
+
+.up_arrow {
+    position: absolute;
+    border-radius: 3px;
+}
+
+.down_arrow {
+    position: absolute;
+    border-radius: 3px;
+}
+
 .bing_search {
     float: left;
     width: 300px;
