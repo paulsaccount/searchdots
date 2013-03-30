@@ -24,7 +24,7 @@ var server = http.createServer(function(req, res) {
 
 
 
-server.listen(process.env.VCAP_APP_PORT || process.env.C9_PORT || "8080");
+server.listen(process.env.VCAP_APP_PORT || process.env.C9_PORT);
 var io = require("socket.io").listen(server);
 io.set("log level", 2);
 
