@@ -1,5 +1,15 @@
 var fs = require("fs");
 var http = require("http");
+var nconf = require("nconf");
+
+nconf.argv({
+    "bingApiKey": {
+        describe: "Bing API Key",
+        demand: "yes"
+    }
+});
+
+var bingApiKey = nconf.get('bingApiKey');
 
 var server = http.createServer(function(req, res) {
     
@@ -18,7 +28,7 @@ var server = http.createServer(function(req, res) {
     
 });
 
-server.listen(process.env.VCAP_APP_PORT || process.env.C9_PORT);
+server.listen(process.env.VCAP_APP_PORT || process.env.C9_PORT || "8080");
 var io = require("socket.io").listen(server);
 io.set("log level", 2);
 
@@ -31,7 +41,7 @@ io.sockets.on("connection", function(socket) {
     });
 
     socket.on("chat", function(data) {
-        io.sockets.emit("chat", { id: id, value: data });
+        io.sockets.emit("chat", { id: id, value: data, "bingApiKey": bingApiKey });
     });
 
     socket.on("click", function() {
