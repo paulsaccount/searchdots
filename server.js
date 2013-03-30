@@ -22,9 +22,18 @@ var server = http.createServer(function(req, res) {
     
 });
 
+
+
 server.listen(process.env.VCAP_APP_PORT || process.env.C9_PORT || "8080");
 var io = require("socket.io").listen(server);
 io.set("log level", 2);
+
+io.set('transports', [
+    , 'flashsocket'
+    , 'htmlfile'
+    , 'xhr-polling'
+    , 'jsonp-polling'
+]);
 
 io.sockets.on("connection", function(socket) {
     var id = socket.id;
