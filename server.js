@@ -2,14 +2,8 @@ var fs = require("fs");
 var http = require("http");
 var nconf = require("nconf");
 
-nconf.argv({
-    "bingApiKey": {
-        describe: "Bing API Key",
-        demand: "yes"
-    }
-});
-
-var bingApiKey = nconf.get('bingApiKey');
+nconf.env();
+var bingApiKey = nconf.get('BING_API_KEY');
 
 var server = http.createServer(function(req, res) {
     
