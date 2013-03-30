@@ -29,7 +29,6 @@ var io = require("socket.io").listen(server);
 io.set("log level", 2);
 
 io.set('transports', [
-    , 'flashsocket'
     , 'htmlfile'
     , 'xhr-polling'
     , 'jsonp-polling'
